@@ -1,8 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import InputField from "../InputField/InputField"
-import { register } from "../../services/userService";
+import { register } from "../../services/userService"
+import { getUserFromToken, setToken } from "../../utils/auth"
+import { UserContext } from "../../contexts/UserContext"
+import { useNavigate } from "react-router"
 
 export default function Register() {
+
+  const { setUser } = useContext(UserContext)
 
   const [formData, setFormData] = useState({
     first_name: '',
@@ -14,18 +19,24 @@ export default function Register() {
 
   const [errors, setErrors] = useState({})
 
+  const navigate = useNavigate()
+
   async function handleSubmit(event) {
     event.preventDefault()
     try {
       const data = await register(formData)
-      console.log(data)
+
+      setToken(data.token)
+      setUser(getUserFromToken())
+      
+      navigate('/calendar')
     } catch (error) {
-      console.log(error)
-      setErrors({...errors, error})
+      setErrors({ ...errors, error })
     }
   }
 
   function handleChange(event) {
+    setErrors({})
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
