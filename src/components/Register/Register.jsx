@@ -1,9 +1,10 @@
 import { useState, useContext } from "react"
-import InputField from "../InputField/InputField"
+import { useNavigate } from "react-router"
+import { UserContext } from "../../contexts/UserContext"
 import { register } from "../../services/userService"
 import { getUserFromToken, setToken } from "../../utils/auth"
-import { UserContext } from "../../contexts/UserContext"
-import { useNavigate } from "react-router"
+import InputField from "../InputField/InputField"
+import styles from './Register.module.css'
 
 export default function Register() {
 
@@ -28,7 +29,7 @@ export default function Register() {
 
       setToken(data.token)
       setUser(getUserFromToken())
-      
+
       navigate('/calendar')
     } catch (error) {
       setErrors({ ...errors, error })
@@ -41,9 +42,9 @@ export default function Register() {
   }
 
   return (
-    <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form} >
+        <h1>Register</h1>
         <InputField
           identifier='first_name'
           label='First Name:'
@@ -88,8 +89,22 @@ export default function Register() {
           required={true}
           errors={errors.error?.non_field_errors}
         />
-        <button type="submit">Register</button>
+        <div>
+          <button 
+          type="submit"
+          disabled={
+            !formData.first_name || 
+            !formData.last_name || 
+            !formData.email || 
+            !formData.password || 
+            formData.password !== formData.password_confirmation
+          }
+          >
+            Register
+          </button>
+        </div>
       </form>
-    </>
+
+    </div>
   )
 }

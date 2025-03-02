@@ -13,7 +13,7 @@ export default function InputField({ identifier, label, type, value, handleChang
       <div>
         {
           errors && errors.map((error, index) => (
-            <p key={index} >{error}</p>
+            <p key={index} className="error-message">{error}</p>
           ))
         }
       </div>
