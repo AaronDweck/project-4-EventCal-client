@@ -6,11 +6,11 @@ import App from './App.jsx'
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </BrowserRouter>
-  </StrictMode>,
+  //   <StrictMode>
+  <BrowserRouter>
+    <UserProvider>
+      <App />
+    </UserProvider>
+  </BrowserRouter>
+  //   </StrictMode>,
 )

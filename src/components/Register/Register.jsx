@@ -90,15 +90,15 @@ export default function Register() {
           errors={errors.error?.non_field_errors}
         />
         <div>
-          <button 
-          type="submit"
-          disabled={
-            !formData.first_name || 
-            !formData.last_name || 
-            !formData.email || 
-            !formData.password || 
-            formData.password !== formData.password_confirmation
-          }
+          <button
+            type="submit"
+            disabled={
+              !formData.first_name ||
+              !formData.last_name ||
+              !formData.email ||
+              !formData.password ||
+              formData.password !== formData.password_confirmation
+            }
           >
             Register
           </button>

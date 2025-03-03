@@ -60,12 +60,12 @@ export default function Login() {
           errors={errors.error?.detail}
         />
         <div>
-          <button 
-          type="submit"
-          disabled={
-            !formData.email || 
-            !formData.password
-          }
+          <button
+            type="submit"
+            disabled={
+              !formData.email ||
+              !formData.password
+            }
           >
             Login
           </button>
