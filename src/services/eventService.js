@@ -13,5 +13,6 @@ export async function eventIndex() {
         return res.data
     } catch (error) {
         console.log(error)
+        throw error.response.data
     }
 }
