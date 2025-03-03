@@ -3,27 +3,41 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
 import moment from "moment"
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import {UserContext} from '../../contexts/UserContext'
+// import { useNavigate } from "react-router"
+import { eventIndex } from "../../services/eventService"
 
 const DnDCalendar = withDragAndDrop(Calendar)
 const localizer = momentLocalizer(moment)
 
 export default function CalendarComp() {
-  const [events, setEvents] = useState([
-    {
-      id: 1,
-      title: "Meeting with Client",
-      start: new Date(2025, 2, 25, 10, 0), // March 25, 2025, 10:00 AM
-      end: new Date(2025, 2, 25, 11, 0),   // March 25, 2025, 11:00 AM
-    },
-    {
-      id: 2,
-      title: "Lunch Break",
-      start: new Date(2025, 2, 25, 13, 0),
-      end: new Date(2025, 2, 25, 14, 0),
-      allDay: true,
-    },
-  ])
+
+  const {user} = useContext(UserContext)
+
+  const [events, setEvents] = useState([])
+
+  // const navigate = useNavigate()
+
+  useEffect(() => {
+    if(!user) {
+      console.log('no user')
+      // navigate('/login')
+    }
+    
+    async function testing() {
+      try {
+        const data = await eventIndex()
+        console.log(data)
+        setEvents(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
+    testing()
+
+  }, [user])
 
   function add() {
     setEvents([ ...events, {
@@ -37,13 +51,16 @@ export default function CalendarComp() {
 
   return (
     <div>
+      <button onClick={add} className="button">add</button>
       <DnDCalendar
+        key={window.location.pathname + events.length}
         localizer={localizer}
         events={events}
         startAccessor='start'
         endAccessor='end'
+        draggableAccessor={() => false} // Disable dragging
+        resizable={false} // Disable resizing
       />
-      <button onClick={add}>add</button>
     </div>
   )
 }

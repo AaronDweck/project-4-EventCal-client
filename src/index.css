@@ -48,3 +48,7 @@ body {
     font-size: medium !important;
     color: #E74C3C !important;
 }
+
+.button {
+    z-index: 9999;
+}
