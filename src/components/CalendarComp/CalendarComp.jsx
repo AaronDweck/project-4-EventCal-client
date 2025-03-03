@@ -51,7 +51,7 @@ export default function CalendarComp() {
 
   return (
     <div>
-      <button onClick={add} className="button">add</button>
+      {/* <button onClick={add} className="button">add</button> */}
       <DnDCalendar
         key={window.location.pathname + events.length}
         localizer={localizer}

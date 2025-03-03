@@ -52,3 +52,7 @@ body {
 .button {
     z-index: 9999;
 }
+
+.sideBar {
+    display: grid;
+}

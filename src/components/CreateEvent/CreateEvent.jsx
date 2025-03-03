@@ -19,9 +19,9 @@ export default function CreateEvent() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      console.log('hello')
-      const data = await eventCreate(formData)
-      console.log(data)
+      console.log(formData)
+      // const data = await eventCreate(formData)
+      // console.log(data)
     } catch (error) {
       console.log(error)
       // setErrors({ ...errors, error })
@@ -30,7 +30,11 @@ export default function CreateEvent() {
 
   function handleChange(event) {
     setErrors({})
-    setFormData({ ...formData, [event.target.name]: event.target.value })
+    if (event.target.type === 'checkbox') {
+      setFormData({ ...formData, [event.target.name]: event.target.checked })
+    } else {
+      setFormData({ ...formData, [event.target.name]: event.target.value })
+    }
   }
 
   return (
@@ -65,10 +69,11 @@ export default function CreateEvent() {
           errors={errors.error?.end_date}
         />
         <InputField
+          className={styles.checkBox}
           identifier='all_day'
           label='All Day:'
           type='checkbox'
-          value={formData.all_day}
+          checked={formData.all_day}
           handleChange={handleChange}
           required={false}
         />

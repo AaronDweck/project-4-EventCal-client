@@ -6,8 +6,7 @@
 }
 
 .form {
-    width: 500px;
-    justify-self: center;
+    width: 80%;
     border-radius: 20px;
     background: var(--secondary-bg);
     padding: 20px;
@@ -42,6 +41,11 @@
     background: var(--tertiary-bg);
     color: var(--secondary-fg);
     resize: none;
+    font-family: inherit;
+}
+
+.form div .checkBox {
+    color: aqua;
 }
 
 .form button {
@@ -65,3 +69,4 @@
     filter: blur(1px);
     cursor: not-allowed;
 }
+
