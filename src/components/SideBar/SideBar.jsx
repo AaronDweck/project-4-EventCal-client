@@ -1,5 +1,10 @@
+import CreateEvent from "../CreateEvent/CreateEvent";
+
 export default function SideBar() {
   return (
-    <h1>SideBar</h1>
+    <div>
+      <h1>SideBar</h1>
+      <CreateEvent />
+    </div>
   )
 }

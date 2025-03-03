@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getToken } from '../utils/auth'
 
-const BASE_URL = import.meta.env.VITE_API_URL + '/events'
+const BASE_URL = import.meta.env.VITE_API_URL + '/events/'
 
 export async function eventIndex() {
     try {
@@ -14,5 +14,19 @@ export async function eventIndex() {
     } catch (error) {
         console.log(error)
         throw error.response.data
+    }
+}
+
+export async function eventCreate(formData) {
+    try {
+        const res = await axios.post(BASE_URL, formData ,{
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
+        })
+        console.log(res)
+    } catch (error) {
+        console.log(error)
+        // throw error.response.data
     }
 }
