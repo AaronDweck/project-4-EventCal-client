@@ -1,18 +1,23 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import styles from './CreateEvent.module.css'
 import InputField from "../InputField/InputField"
 import { eventCreate } from "../../services/eventService"
+import { EventContext } from "../../contexts/EventContext"
 
 export default function CreateEvent() {
 
-  const [formData, setFormData] = useState({
+  const { events, setEvents } = useContext(EventContext)
+
+  const initialFormData = {
     title: '',
     start_date: '',
     end_date: '',
     all_day: false,
     description: '',
     color: '#D0021B',
-  })
+  }
+
+  const [formData, setFormData] = useState(initialFormData)
 
   const [errors, setErrors] = useState({})
 
@@ -20,8 +25,15 @@ export default function CreateEvent() {
     event.preventDefault()
     try {
       const data = await eventCreate(formData)
-      console.log(data)
-      // todo add the data to the events list
+
+      const newEvent = {
+        ...data,
+        start_date: new Date(data.start_date),
+        end_date: new Date(data.end_date),
+      }
+      setEvents([...events, newEvent])
+
+      setFormData(initialFormData)
     } catch (error) {
       console.log(error)
       setErrors({ ...errors, error })
