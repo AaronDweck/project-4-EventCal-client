@@ -24,9 +24,9 @@ export async function eventCreate(formData) {
                 Authorization: `Bearer ${getToken()}`
             }
         })
-        console.log(res)
+        return res.data
     } catch (error) {
         console.log(error)
-        // throw error.response.data
+        throw error.response.data
     }
 }

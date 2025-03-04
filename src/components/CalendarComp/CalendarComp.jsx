@@ -28,7 +28,7 @@ export default function CalendarComp() {
     async function testing() {
       try {
         const data = await eventIndex()
-        console.log(data)
+        // console.log(data)
         setEvents(data)
       } catch (error) {
         console.log(error)
@@ -44,14 +44,14 @@ export default function CalendarComp() {
       id: 3,
       title: "Lunch test",
       start: new Date(2025, 2, 26, 13, 0),
-      end: new Date(2025, 2, 26, 14, 0),
+      end: new Date(2025, 2, 26, 15, 0),
       allDay: false,
     }])
   }
 
   return (
     <div>
-      {/* <button onClick={add} className="button">add</button> */}
+      <button onClick={add} className="button">add</button>
       <DnDCalendar
         key={window.location.pathname + events.length}
         localizer={localizer}

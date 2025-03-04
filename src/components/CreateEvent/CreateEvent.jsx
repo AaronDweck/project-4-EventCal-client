@@ -19,12 +19,12 @@ export default function CreateEvent() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      console.log(formData)
-      // const data = await eventCreate(formData)
-      // console.log(data)
+      const data = await eventCreate(formData)
+      console.log(data)
+      // todo add the data to the events list
     } catch (error) {
       console.log(error)
-      // setErrors({ ...errors, error })
+      setErrors({ ...errors, error })
     }
   }
 
@@ -66,7 +66,7 @@ export default function CreateEvent() {
           value={formData.end_date}
           handleChange={handleChange}
           required={true}
-          errors={errors.error?.end_date}
+          errors={errors.error?.non_field_errors || errors.error?.end_date}
         />
         <InputField
           className={styles.checkBox}
