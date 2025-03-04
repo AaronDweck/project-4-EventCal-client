@@ -43,9 +43,13 @@ export default function CalendarComp() {
     setEvents([ ...events, {
       id: 3,
       title: "Lunch test",
-      start: new Date(2025, 2, 26, 13, 0),
-      end: new Date(2025, 2, 26, 15, 0),
-      allDay: false,
+      start_date: new Date(2025, 2, 26, 13, 0),
+      end_date: new Date(2025, 2, 27, 15, 0),
+      all_day: true,
+      description: '',
+      color: '#D0021B',
+      category: null,
+      user: 1,
     }])
   }
 
@@ -56,8 +60,9 @@ export default function CalendarComp() {
         key={window.location.pathname + events.length}
         localizer={localizer}
         events={events}
-        startAccessor='start'
-        endAccessor='end'
+        startAccessor='start_date'
+        endAccessor='end_date'
+        allDayAccessor='all_day'
         draggableAccessor={() => false} // Disable dragging
         resizable={false} // Disable resizing
       />
