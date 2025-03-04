@@ -5,6 +5,7 @@ import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 import MainLayout from './components/MainLayout/MainLayout'
 import CalendarComp from './components/CalendarComp/CalendarComp'
+import SideBar from './components/SideBar/SideBar'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route element={<MainLayout />}>
-        <Route path='/calendar' element={<CalendarComp />} />   
+        <Route path='/calendar' element={<SideBar />} />
+        <Route path='/calendar/:id' element={<SideBar />} />
       </Route>
     </Routes>
   )
