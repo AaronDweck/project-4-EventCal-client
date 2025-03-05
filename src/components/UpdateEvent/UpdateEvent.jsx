@@ -3,20 +3,19 @@ import styles from './UpdateEvent.module.css'
 import InputField from "../InputField/InputField"
 import { EventContext } from "../../contexts/EventContext"
 import { useNavigate, useParams } from "react-router"
+import { eventUpdate } from "../../services/eventService"
 
 export default function UpdateEvent() {
   const { events, setEvents } = useContext(EventContext)
-
   const [formData, setFormData] = useState({
     title: '',
     start_date: '',
     end_date: '',
-    all_day: true,
+    all_day: false,
     description: '',
     color: '#D0021B',
   })
   const [errors, setErrors] = useState({})
-
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -36,11 +35,13 @@ export default function UpdateEvent() {
     }
 
     const singleEvent = events.find(event => event.id.toString() === id)
+
     const formattedEvent = {
       ...singleEvent,
       start_date: new Date(singleEvent.start_date).toISOString().slice(0, 16),
       end_date: new Date(singleEvent.end_date).toISOString().slice(0, 16),
     }
+
     setFormData(formattedEvent)
   }, [id])
 
@@ -48,7 +49,18 @@ export default function UpdateEvent() {
   async function handleSubmit(event) {
     event.preventDefault()
     try {
-      console.log('updating...')
+      const data = await eventUpdate(formData.id, formData)
+
+      const formattedEvent = {
+        ...data,
+        start_date: new Date(data.start_date),
+        end_date: new Date(data.end_date),
+      }
+
+      const updatedEvents = events.map(event => event.id !== data.id ? event : formattedEvent)
+      setEvents(updatedEvents)
+      
+      navigate('/calendar')
     } catch (error) {
       console.log(error)
       setErrors({ ...errors, error })

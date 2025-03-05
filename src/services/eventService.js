@@ -35,3 +35,17 @@ export async function eventCreate(formData) {
         throw error.response.data
     }
 }
+
+export async function eventUpdate(id, data) {
+    try {
+        const res = await axios.patch(BASE_URL + `${id}/`, data ,{
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log(error)
+        throw error.response.data
+    }
+}

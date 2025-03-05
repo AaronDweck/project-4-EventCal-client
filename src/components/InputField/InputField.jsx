@@ -1,4 +1,4 @@
-export default function InputField({ identifier, label, type, value, handleChange, required, errors }) {
+export default function InputField({ identifier, label, type, value, handleChange, required, errors, checked }) {
   return (
     <div>
       <label htmlFor={identifier}>{label}</label>
@@ -9,6 +9,7 @@ export default function InputField({ identifier, label, type, value, handleChang
         value={value}
         onChange={handleChange}
         required={required}
+        checked={checked}
       />
       <div>
         {
