@@ -56,3 +56,72 @@ body {
 .sideBar {
     display: grid;
 }
+
+/* restyling the calendar */
+
+.rbc-day-slot .rbc-time-slot {
+    border-top: none;
+}
+
+.rbc-off-range-bg {
+    background: var(--secondary-bg);
+}
+
+.rbc-today {
+    background-color: var(--tertiary-bg);
+}
+
+.rbc-toolbar button {
+    color: var(--primary-fg);
+}
+
+.rbc-time-view {
+    border: 1px solid var(--tertiary-fg);
+}
+
+.rbc-time-header-content {
+    border-left: 1px solid var(--tertiary-fg);
+}
+
+.rbc-header {
+    border-bottom: 1px solid var(--tertiary-fg);
+
+}
+
+.rbc-header+.rbc-header {
+    border-left: 1px solid var(--tertiary-fg);
+}
+
+.rbc-day-bg+.rbc-day-bg {
+    border-left: 1px solid var(--tertiary-fg);
+}
+
+.rbc-timeslot-group {
+    border-bottom: 1px solid var(--tertiary-fg);
+}
+
+.rbc-time-content {
+    border-top: 2px solid var(--tertiary-fg);
+}
+
+.rbc-time-content>*+*>* {
+    border-left: 1px solid var(--tertiary-fg);
+}
+
+.rbc-current-time-indicator {
+    background-color: red;
+}
+
+.rbc-month-view {
+    border: 1px solid var(--tertiary-fg);
+}
+
+.rbc-month-row+.rbc-month-row {
+    border-top: 1px solid var(--tertiary-fg);
+}
+
+/* agenda */
+
+.rbc-agenda-content {
+    color: white;
+}
