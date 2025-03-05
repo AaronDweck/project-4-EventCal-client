@@ -3,7 +3,7 @@ import styles from './UpdateEvent.module.css'
 import InputField from "../InputField/InputField"
 import { EventContext } from "../../contexts/EventContext"
 import { useNavigate, useParams } from "react-router"
-import { eventUpdate } from "../../services/eventService"
+import { eventDelete, eventUpdate } from "../../services/eventService"
 
 export default function UpdateEvent() {
   const { events, setEvents } = useContext(EventContext)
@@ -59,7 +59,7 @@ export default function UpdateEvent() {
 
       const updatedEvents = events.map(event => event.id !== data.id ? event : formattedEvent)
       setEvents(updatedEvents)
-      
+
       navigate('/calendar')
     } catch (error) {
       console.log(error)
@@ -69,6 +69,16 @@ export default function UpdateEvent() {
 
   async function handleDelete() {
     console.log('deleting...')
+    try {
+      await eventDelete(formData.id)
+
+      const updatedEvents = events.filter(event => event.id !== formData.id)
+      setEvents(updatedEvents)
+
+      navigate('/calendar')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   function handleChange(event) {

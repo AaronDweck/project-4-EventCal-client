@@ -24,7 +24,7 @@ export async function eventIndex() {
 
 export async function eventCreate(formData) {
     try {
-        const res = await axios.post(BASE_URL, formData ,{
+        const res = await axios.post(BASE_URL, formData, {
             headers: {
                 Authorization: `Bearer ${getToken()}`
             }
@@ -38,7 +38,21 @@ export async function eventCreate(formData) {
 
 export async function eventUpdate(id, data) {
     try {
-        const res = await axios.patch(BASE_URL + `${id}/`, data ,{
+        const res = await axios.patch(BASE_URL + `${id}/`, data, {
+            headers: {
+                Authorization: `Bearer ${getToken()}`
+            }
+        })
+        return res.data
+    } catch (error) {
+        console.log(error)
+        throw error.response.data
+    }
+}
+
+export async function eventDelete(id) {
+    try {
+        const res = await axios.delete(BASE_URL + `${id}/`, {
             headers: {
                 Authorization: `Bearer ${getToken()}`
             }
