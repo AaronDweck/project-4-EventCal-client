@@ -46,7 +46,8 @@ export default function CalendarComp() {
         startAccessor='start_date'
         endAccessor='end_date'
         allDayAccessor='all_day'
-        onSelectEvent={(e) => navigate(`/calendar/${e.id}`)}
+        onSelectEvent={(event) => navigate(`/calendar/${event.id}`)}
+        eventPropGetter={(event) => ({ style: { background: event.color } })}
       />
     </div>
   )
