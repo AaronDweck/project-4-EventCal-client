@@ -49,14 +49,6 @@ body {
     color: #E74C3C !important;
 }
 
-.button {
-    z-index: 9999;
-}
-
-.sideBar {
-    display: grid;
-}
-
 /* restyling the calendar */
 
 .rbc-day-slot .rbc-time-slot {

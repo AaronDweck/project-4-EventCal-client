@@ -148,7 +148,7 @@ export default function UpdateEvent() {
           handleChange={handleChange}
           required={false}
         />
-        <div>
+        <div className={styles.updateButtons}>
           <button
             type="submit"
             disabled={

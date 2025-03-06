@@ -3,3 +3,7 @@
     grid-template-columns: 7fr 3fr;
     height: 100%;
 }
+
+.layout div {
+    max-height: 100vh;
+}

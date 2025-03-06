@@ -69,3 +69,13 @@
     filter: blur(1px);
     cursor: not-allowed;
 }
+
+.updateButtons {
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.updateButtons button {
+    width: 45%;
+}

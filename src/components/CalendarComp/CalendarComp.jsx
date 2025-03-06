@@ -23,6 +23,7 @@ export default function CalendarComp() {
   useEffect(() => {
     if (!user) {
       navigate('/login')
+      return
     }
 
     async function fetchingEvents() {
