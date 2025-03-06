@@ -22,7 +22,7 @@ export default function CalendarComp() {
 
   useEffect(() => {
     if (!user) {
-      navigate('/login')
+      navigate('/')
       return
     }
 

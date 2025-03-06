@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 5rem;
+}
+
+.subtitle {
+    font-size: 1.7rem;
+    color: var(--tertiary-fg);
+}
+
+.buttons {
+    display: flex;
+    gap: 3.5rem;
+    margin-bottom: 3rem;
+}
+
+.loginButton,
+.registerButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginButton {
+    background-color: var(--primary-fg);
+    color: white;
+}
+
+.loginButton:hover {
+    filter: brightness(115%);
+}
+
+.registerButton {
+    background-color: var(--secondary-bg);
+    color: var(--secondary-fg);
+}
+
+.registerButton:hover {
+    background-color: var(--tertiary-bg);
+}
+
+.sectionTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.featureGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.featureCard {
+    background-color: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 270px;
+}
+
+.featureTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--secondary-fg);
+}
+
+.featureDescription {
+    font-size: 1rem;
+    color: var(--tertiary-fg);
+    margin-top: 0.5rem;
+}
