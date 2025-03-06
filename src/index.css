@@ -51,6 +51,10 @@ body {
 
 /* restyling the calendar */
 
+.rbc-calendar {
+    height: 100vh;
+}
+
 .rbc-day-slot .rbc-time-slot {
     border-top: none;
 }
