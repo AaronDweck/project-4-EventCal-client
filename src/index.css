@@ -75,6 +75,10 @@ body {
     border-left: 1px solid var(--tertiary-fg);
 }
 
+.rbc-time-header.rbc-overflowing {
+    border-right: none;
+}
+
 .rbc-header {
     border-bottom: 1px solid var(--tertiary-fg);
 

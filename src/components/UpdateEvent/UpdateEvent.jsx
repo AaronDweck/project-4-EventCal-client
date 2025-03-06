@@ -23,15 +23,6 @@ export default function UpdateEvent() {
     if (events.length === 0) {
       navigate('/calendar')
       return
-      // async function fetchingEvents() {
-      //   try {
-      //     const data = await eventIndex()
-      //     setEvents(data)
-      //   } catch (error) {
-      //     console.log(error)
-      //   }
-      // }
-      // fetchingEvents()
     }
 
     const singleEvent = events.find(event => event.id.toString() === id)
