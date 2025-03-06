@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router"
+import { NavLink, useNavigate } from "react-router"
 import { UserContext } from "../../contexts/UserContext"
 import { register } from "../../services/userService"
 import { getUserFromToken, setToken } from "../../utils/auth"
@@ -103,6 +103,7 @@ export default function Register() {
             Register
           </button>
         </div>
+        <p className={styles.hasAccount}>Already have an account?<NavLink to='/login'>Log in</NavLink></p>
       </form>
 
     </div>

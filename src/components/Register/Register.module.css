@@ -56,3 +56,14 @@
     filter: blur(1px);
     cursor: not-allowed;
 }
+
+.hasAccount {
+    font-size: 1.3rem;
+    margin-bottom: 0px;
+    color: var(--tertiary-fg);
+}
+
+.hasAccount a {
+    margin-left: 1.3rem;
+    color: var(--primary-fg);
+}
