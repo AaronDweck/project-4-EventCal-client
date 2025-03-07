@@ -1,6 +1,7 @@
 .sideBar {
     display: grid;
     grid-template-rows: 1fr 20fr;
+    height: 100vh;
 }
 
 .navigation {
