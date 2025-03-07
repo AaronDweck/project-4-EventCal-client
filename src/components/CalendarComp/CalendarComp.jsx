@@ -61,19 +61,27 @@ export default function CalendarComp() {
         all_day: Boolean(isAllDay)
       }
 
-      const resData = await eventUpdate(event.id, data)
-
-      // const formattedEvent = {
-      //   ...resData,
-      //   start_date: new Date(resData.start_date),
-      //   end_date: new Date(resData.end_date),
-      // }
-      // const updatedEvents = events.map(existingEvent => existingEvent.id !== event.id ? existingEvent : formattedEvent)
-      // setEvents(updatedEvents)
+      await eventUpdate(event.id, data)
 
       if (id) navigate('/calendar')
     } catch (error) {
       console.log(error)
+      alert('could not update event at this time.')
+
+      // if there was an error updating the db reset the event on the calendar
+      const updatedEvents = events.map(existingEvent => {
+        if (existingEvent !== event) {
+          return existingEvent
+        }
+        return ({
+          ...event,
+          start_date: event.start_date,
+          end_date: event.end_date,
+          all_day: event.all_day
+        })
+      })
+
+      setEvents(updatedEvents)
     }
   }
 
